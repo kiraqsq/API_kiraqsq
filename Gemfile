@@ -74,7 +74,7 @@ group :development, :test do
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false
  
-  gem 'rspec-rails', '~> 3.5' # , :github => 'rspec/rspec-rails'
+  gem 'rspec-rails', '~> 7.0' # , :github => 'rspec/rspec-rails'
   gem 'rails-controller-testing'
  
   # Checks ruby code grammar
