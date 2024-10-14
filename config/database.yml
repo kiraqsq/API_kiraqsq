@@ -8,7 +8,7 @@ default: &default
  host: localhost
  adapter: postgresql
  encoding: UTF8
- username: sinatra_admin
+ username: kiraqsq_api_user
  timeout: 5000
  reaping_frequency: 30
  # For details on connection pooling, see rails configuration guide
@@ -18,18 +18,18 @@ default: &default
 
 development:
  <<: *default
- database: api_hirer_development
- password: <%= Rails.application.secrets[:database][:password] %>
+ database: kiraqsq_development
+ password: 12345
 
 test:
  <<: *default
- database: api_hirer_test
- password: <%= Rails.application.secrets[:database][:password] %>
+ database: kiraqsq_test
+ password: 12345
 
 production:
  <<: *default
- database: api_hirer_production
- password: <%= ENV['EXERCISE_DATABASE_PASSWORD'] %>
+ database: kiraqsq_production
+ password: 12345
 
 
 # Warning: The database defined as "test" will be erased and

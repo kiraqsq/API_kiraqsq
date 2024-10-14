@@ -93,7 +93,10 @@ group :test do
  
  group :coverage do
   gem 'simplecov', :require => false
- end
+end
+
+ 
+gem 'mutex_m'
  
 
 
