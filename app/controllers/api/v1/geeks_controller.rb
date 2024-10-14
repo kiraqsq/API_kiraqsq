@@ -33,6 +33,24 @@ class Api::V1::GeeksController < ApplicationController
     render json: { message: 'Job successfully deleted' }, status: :ok
   end
 
+  def mark_deleted #destroy
+    # company = Company.find(params[:company_id]) # 1-й вариант маршрута 
+    geek = Geek.find(params[:id])
+   
+    if geek.deleted
+      puts "deleted: "
+      render json: { deleted_geek: [],
+                     deleted_already: :not_modified,
+      }
+    else
+      geek.delete_geek  # model method
+      render json: { deleted_geek: geek,
+                     code: 200,
+                     status: :success,
+      }, except: [:created_at, :updated_at]
+    end
+  end
+
 
   private
   def set_geek
@@ -42,4 +60,6 @@ class Api::V1::GeeksController < ApplicationController
   def geek_params
     params.permit(:name, :stack, :resume)
   end
+
+  
 end

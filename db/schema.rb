@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_13_171619) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_14_210950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_13_171619) do
     t.boolean "invited"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "deleted"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -28,6 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_13_171619) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "deleted"
   end
 
   create_table "geeks", force: :cascade do |t|
@@ -36,6 +38,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_13_171619) do
     t.text "resume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "deleted"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -44,5 +47,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_13_171619) do
     t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "deleted"
   end
 end

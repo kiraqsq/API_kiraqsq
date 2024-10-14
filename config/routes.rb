@@ -12,10 +12,10 @@ Rails.application.routes.draw do
       resources :geeks do
         resources :applies
       end
-      #match '/:id/companies_deleted', to: 'companies#mark_deleted', via: :put
-      #match '/:id/jobs_deleted', to: 'jobs#mark_deleted', via: :put
-      #match '/:id/geeks_deleted', to: 'geeks#mark_deleted', via: :put
-      #match '/:id/applies_deleted', to: 'applies#mark_deleted', via: :put
+      match '/:id/companies_deleted', to: 'companies#mark_deleted', via: :put
+      match '/:id/jobs_deleted', to: 'jobs#mark_deleted', via: :put
+      match '/:id/geeks_deleted', to: 'geeks#mark_deleted', via: :put
+      match '/:id/applies_deleted', to: 'applies#mark_deleted', via: :put
     end
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

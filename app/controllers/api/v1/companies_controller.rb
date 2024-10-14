@@ -33,7 +33,24 @@ class Api::V1::CompaniesController < ApplicationController
     render json: { message: 'Job successfully deleted' }, status: :ok
   end
 
-
+  def mark_deleted #destroy
+    # company = Company.find(params[:company_id]) # 1-й вариант маршрута 
+    company = Company.find(params[:id])
+   
+    if company.deleted
+      puts "deleted: "
+      render json: { deleted_company: [],
+                     deleted_already: :not_modified,
+      }
+    else
+      company.delete_company  # model method
+      render json: { deleted_company: company,
+                     code: 200,
+                     status: :success,
+      }, except: [:created_at, :updated_at]
+    end
+  end
+  
   private
   def set_company
     @company = Company.find(params[:id])
@@ -42,4 +59,7 @@ class Api::V1::CompaniesController < ApplicationController
   def company_params
     params.permit(:name, :location)
   end
+
+ 
+
 end

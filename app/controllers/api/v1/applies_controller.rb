@@ -49,7 +49,24 @@ class Api::V1::AppliesController < ApplicationController
     render json: { message: 'Job successfully deleted' }, status: :ok
   end
 
-
+  def mark_deleted #destroy
+    # company = Company.find(params[:company_id]) # 1-й вариант маршрута 
+    apply = Apply.find(params[:id])
+   
+    if apply.deleted
+      puts "deleted: "
+      render json: { deleted_apply: [],
+                     deleted_already: :not_modified,
+      }
+    else
+      apply.delete_apply  # model method
+      render json: { deleted_apply: apply,
+                     code: 200,
+                     status: :success,
+      }, except: [:created_at, :updated_at]
+    end
+  end
+  
   private
   def set_apply
     @apply = Apply.find(params[:id])
@@ -58,4 +75,7 @@ class Api::V1::AppliesController < ApplicationController
   def apply_params
     params.permit(:job_id, :geek_id, :read, :invited)
   end
+
+  
+  
 end
